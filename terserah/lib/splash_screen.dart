@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFF418B8C), // Background color similar to your image
+        color: Color(0xFFECF1EF), // Background color similar to your image
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 10,
                     height: 10,
                     decoration: BoxDecoration(
-                      color: visible1 ? Color(0xFF4A7D7D) : Colors.transparent,
+                      color: visible1 ? Color(0xFF418B8C) : Colors.transparent,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -84,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 10,
                     height: 10,
                     decoration: BoxDecoration(
-                      color: visible2 ? Color(0xFF4A7D7D) : Colors.transparent,
+                      color: visible2 ? Color(0xFF418B8C) : Colors.transparent,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -94,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 10,
                     height: 10,
                     decoration: BoxDecoration(
-                      color: visible3 ? Color(0xFF4A7D7D) : Colors.transparent,
+                      color: visible3 ? Color(0xFF418B8C) : Colors.transparent,
                       shape: BoxShape.circle,
                     ),
                   ),
