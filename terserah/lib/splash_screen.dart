@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFFF5F9F7), // Background color similar to your image
+        color: Color(0xFF418B8C), // Background color similar to your image
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,

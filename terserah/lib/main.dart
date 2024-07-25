@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Splash Screen Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Helvetica',
       ),
       home: SplashScreen(),
     );
