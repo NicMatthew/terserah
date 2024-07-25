@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/sign_in.dart';
 
 void main() {
   runApp(MyApp());
@@ -80,7 +81,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('Welcome to the Home Screen!'),
+        child: Text('Welcome to te Home Screen!'),
       ),
     );
   }
