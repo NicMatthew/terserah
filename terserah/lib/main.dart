@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Splash Screen Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Helvetica',
       ),
       home: SplashScreen(),
     );
@@ -50,13 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
               'terserah.',
               style: TextStyle(
                 fontSize: 24,
+                fontFamily: 'Helvetica',
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF4A7D7D),
+                color: Color(0xFF418B8C),
               ),
             ),
             SizedBox(height: 10),
             CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4A7D7D)),
+              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF418B8C)),
             ),
           ],
         ),
@@ -70,7 +72,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        title: Text('Home Screen',
+        style: TextStyle(
+            fontSize: 20.0,
+            color: Color(0xff418B8C),
+          ),
+        ),
       ),
       body: Center(
         child: Text('Welcome to the Home Screen!'),

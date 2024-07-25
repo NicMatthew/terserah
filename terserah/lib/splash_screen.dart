@@ -5,7 +5,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFFF5F9F7), // Background color similar to your image
+        color: Color(0xFF418B8C), // Background color similar to your image
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -17,12 +17,12 @@ class SplashScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4A7D7D),
+                  color: Color(0xFF418B8C),
                 ),
               ),
               SizedBox(height: 10),
               CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF4A7D7D)),
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF418B8C)),
               ),
             ],
           ),
