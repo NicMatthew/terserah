@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,98 +35,192 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   Widget _buildStepContent() {
     switch (_currentStep) {
       case 0:
-        return Column(
-          children: [
-            Text('Umur kamu berapa?'),
-            SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildOptionButton('12-20'),
-                _buildOptionButton('21-45'),
-                _buildOptionButton('> 46'),
-              ],
-            ),
-            SizedBox(height: 30),
-            Text('Apa gender kamu?'),
-            SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildOptionButton('Cowo'),
-                _buildOptionButton('Cewe'),
-              ],
-            ),
-          ],
+        return Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(height: 20,),
+              Text(
+                'Umur kamu berapa?',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(65, 139, 140, 1),
+                ),
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildOptionButton(text: '12-20'),
+                  _buildOptionButton(text: '21-45'),
+                  _buildOptionButton(text: '> 46'),
+                ],
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Apa gender kamu?',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(65, 139, 140, 1),
+                ),
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildOptionButton(text: 'Cowo'),
+                  _buildOptionButton(text: 'Cewe'),
+                ],
+              ),
+            ],
+          )
         );
       case 1:
-        return Column(
-          children: [
-            Text('Status kamu apa nih?'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildOptionButton('Jomblo'),
-                _buildOptionButton('Pacaran'),
-                _buildOptionButton('Menikah'),
-                _buildOptionButton('Berkeluarga'),
-              ],
-            ),
-          ],
+        return Container(
+          width: 300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                'Status kamu apa nih?',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(65, 139, 140, 1),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildOptionButton(text: 'Jomblo', size: 120),
+                  _buildOptionButton(text: 'Pacaran', size: 120),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildOptionButton(text: 'Menikah', size: 120),
+                  _buildOptionButton(text: 'Berkeluarga', size: 120),
+                ],
+              ),
+            ],
+          )
         );
       case 2:
-        return Column(
+        return Container(
+          width: 300,
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Kamu lebih suka beraktivitas dimana?'),
+            Container(
+              width: 260,
+              child: Column(
+                children: [
+                  Text(
+                    'Kamu lebih suka beraktivitas dimana?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(65, 139, 140, 1),
+                    ),
+                  ),
+                  Text(
+                    "Bisa pilih lebih dari satu",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                      color: Color.fromRGBO(65, 139, 140, 1),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 30,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildOptionButton('Indoor'),
-                _buildOptionButton('Outdoor'),
+                _buildOptionButton(text: 'Indoor', size: 120),
+                _buildOptionButton(text: 'Outdoor', size: 120),
               ],
             ),
           ],
-        );
+        )
+      );
       case 3:
-        return Column(
-          children: [
-            Text('Domisili kamu sekarang'),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Ketik lokasi',
-                border: OutlineInputBorder(),
+        return Container(
+          width: 300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Domisili kamu sekarang',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(65, 139, 140, 1),
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: Icon(Icons.location_on),
-              label: Text('Gunakan lokasi terkini'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
+              SizedBox(height: 20,),
+              TextField(
+                decoration: InputDecoration(
+                  fillColor: Color.fromRGBO(255, 255, 255, 1),
+                  filled: true,
+                  hintText: 'Ketik lokasi',
+                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none
+                  ),
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+
+                  },
+                  icon: Icon(Icons.location_on),
+                  label: Text('Gunakan lokasi terkini'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromRGBO(65, 139, 140, 1),
+                    foregroundColor: Color.fromRGBO(255, 255, 255, 1),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       default:
         return Container();
     }
   }
 
-  Widget _buildOptionButton(String text) {
+  Widget _buildOptionButton({String text = "button", double size = 100.00}) {
     return Container(
-      width: 70,
-      height: 70,
+      width: size,
+      height: size,
       child: ElevatedButton(
         onPressed: () {},
         child: Text(
           text,
           style: TextStyle(
             color: Colors.white,
+            fontSize: 16,
           ),
         ),
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(), backgroundColor: Colors.teal,
+          shape: CircleBorder(), backgroundColor: Color.fromRGBO(65, 139, 140, 1),
           padding: EdgeInsets.all(10),
         ),
       ),
@@ -142,13 +238,20 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               Container(
                 height: 180,
                 color: Color(0xFFECF1EF), // Match background color
+                padding: EdgeInsets.only(top: 50),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset('assets/terserah_logo.png', height: 80),
                       SizedBox(height: 15),
-                      Text('Kenalin diri kamu yuk!'),
+                      Text(
+                        'Kenalin diri kamu yuk!',
+                        style: TextStyle(
+                          color: Color.fromRGBO(65, 139, 140, 1),
+                          fontSize: 18,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -173,7 +276,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                           ),
                         ),
                         SizedBox(height: 30),
-                        _buildStepContent(),
+                        Container(
+                          height: 400,
+                          child: _buildStepContent(),
+                        ),
                       ],
                     ),
                   ),
@@ -186,13 +292,23 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
             left: 0,
             right: 0,
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.symmetric(vertical: 40),
               color: Color(0xFFECF1EF),
-              child: ElevatedButton(
-                onPressed: _nextStep,
-                child: Text('Selanjutnya'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+              child: Center(
+                child: SizedBox(
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: _nextStep,
+                    child: Text('Selanjutnya'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(65, 139, 140, 1),
+                      foregroundColor: Color.fromRGBO(255, 255, 255, 1),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
