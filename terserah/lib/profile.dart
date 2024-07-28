@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/edit_profile.dart';
 import 'package:terserah/home.dart';
 
 class MyAppProfile extends StatelessWidget {
@@ -106,7 +107,17 @@ class ProfileHeader extends StatelessWidget {
           ],
         ),
         Spacer(),
-        Icon(Icons.edit, color: Color.fromRGBO(65, 139, 140, 1)),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UbahProfilPage(),
+              ),
+            );
+          },
+          child: Icon(Icons.edit, color: Color.fromRGBO(65, 139, 140, 1)),
+        ),
       ],
     );
   }
