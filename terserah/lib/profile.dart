@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/home.dart';
 
 class MyAppProfile extends StatelessWidget {
   @override
@@ -19,7 +20,12 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Color.fromRGBO(65, 139, 140, 1)),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyAppHome()),
+            );
+          },
         ),
         title: Center(
           child: Container(

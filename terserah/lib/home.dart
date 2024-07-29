@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/profile.dart';
 
 void main() {
   runApp(MyAppHome());
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     ),
 
                     SizedBox(width: 5),
-                    Column( 
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
@@ -57,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     // Navigasi ke halaman profil
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                      MaterialPageRoute(builder: (context) => MyAppProfile()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

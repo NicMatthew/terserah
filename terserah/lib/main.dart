@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/profile.dart';
 import 'package:terserah/sign_in.dart';
 import 'splash_screen.dart';
 import 'package:terserah/preference.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes:{
         '/preferencestart':(context)=>MyAppPreference(),
         '/home': (context)=> MyAppHome(),
+        '/profile': (context)=> MyAppProfile(),
       },
     );
   }
