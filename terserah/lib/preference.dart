@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/home.dart';
 
 void main() {
   runApp(MyAppPreference());
@@ -29,6 +30,31 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
       }
     });
   }
+
+  Widget _buildOptionButtonWithImage({required String imagePath, required double size}) {
+    return Container(
+      width: size - 10,
+      height: size - 10,
+      child: ElevatedButton(
+        onPressed: () {
+          // Tambahkan logika onPressed Anda di sini
+        },
+        child: Image.asset(
+          imagePath,
+          width: 50,  // Ukuran gambar di dalam tombol, sesuaikan sesuai kebutuhan
+          height: 50,  // Ukuran gambar di dalam tombol, sesuaikan sesuai kebutuhan
+        ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color.fromRGBO(65, 139, 140, 1),  // Sesuaikan warna tombol
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+        ),
+      ),
+    );
+  }
+
+
 
   Widget _buildStepContent() {
     switch (_currentStep) {
@@ -68,8 +94,32 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildOptionButton(text: 'Cowo'),
-                  _buildOptionButton(text: 'Cewe'),
+                  Column(
+                    children: [
+                      _buildOptionButtonWithImage(imagePath: 'assets/male.png', size: 110),
+                      SizedBox(height: 15),  // Jarak antara gambar dan teks
+                      Text(
+                        'Cowo',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color.fromRGBO(65, 139, 140, 1),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      _buildOptionButtonWithImage(imagePath: 'assets/female.png', size: 110),
+                      SizedBox(height: 15),  // Jarak antara gambar dan teks
+                      Text(
+                        'Cewe',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color.fromRGBO(65, 139, 140, 1),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],
@@ -297,7 +347,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: _nextStep,
+                    onPressed: (){
+                      if(_currentStep==3){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MyAppHome(),),);
+                      }
+                      else{
+                        _nextStep();
+                      }
+                    },
                     child: Text('Selanjutnya'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(65, 139, 140, 1),
