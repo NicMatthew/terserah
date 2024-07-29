@@ -47,10 +47,12 @@ class _SplashScreenState extends State<SplashScreen> {
   _navigateToHome() async {
     await Future.delayed(Duration(seconds: 3), () {
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => HomeScreen()),
+        //
+        // );
+        Navigator.pushNamed(context, '/preferencestart');
       }
     });
   }

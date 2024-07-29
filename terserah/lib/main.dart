@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:terserah/sign_in.dart';
 import 'splash_screen.dart';
+import 'package:terserah/preference.dart';
+import 'package:terserah/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +19,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Helvetica',
       ),
       home: SplashScreen(),
+      routes:{
+        '/preferencestart':(context)=>MyAppPreference(),
+        '/home': (context)=> MyAppHome(),
+      },
     );
   }
 }
