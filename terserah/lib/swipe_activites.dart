@@ -84,46 +84,76 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Eksplor'),
-        backgroundColor: Colors.teal,
-      ),
-      body: Center(
-        child: SizedBox(
-          width: 350, // Fixed width
-          height: 600, // Fixed height
-          child: SwipableStack(
-            controller: controller,
-            itemCount: infiniteImages.length,
-            onSwipeCompleted: (index, direction) {
-              // Handle swipe complete action here
-              if (direction != SwipeDirection.left && direction != SwipeDirection.right) {
-                controller.rewind(); // Rewind if not left or right swipe
-              }
-            },
-            builder: (context, properties) {
-              final index = properties.index % infiniteImages.length;
-
-              return StatefulBuilder(
-                builder: (context, setState) {
-                  return CardWidget(
-                    index: index,
-                    image: infiniteImages[index],
-                    category: infiniteCategories[index],
-                    name: infiniteFoodsOrActivities[index],
-                    description: infiniteDescriptions[index],
-                    isExpanded: _expandedStates[index] ?? false,
-                    onToggleDescription: () {
-                      setState(() {
-                        _expandedStates[index] = !(_expandedStates[index] ?? false);
-                      });
-                    },
-                  );
-                },
-              );
-            },
+      backgroundColor: Color.fromRGBO(236, 241, 239, 1),
+      body: Column(
+        children: [
+          // Header
+          Container(
+            color: Color.fromRGBO(236, 241, 239, 1),
+            padding: EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 0),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back, color: Color.fromRGBO(65, 139, 140, 1)),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                Expanded(
+                  child: Text(
+                    'Eksplor',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(65, 139, 140, 1),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(width: 48), // To balance the space taken by the back button
+              ],
+            ),
           ),
-        ),
+          Expanded(
+            child: Center(
+              child: SizedBox(
+                width: 350, // Fixed width
+                height: 600, // Fixed height
+                child: SwipableStack(
+                  controller: controller,
+                  itemCount: infiniteImages.length,
+                  onSwipeCompleted: (index, direction) {
+                    // Handle swipe complete action here
+                    if (direction != SwipeDirection.left && direction != SwipeDirection.right) {
+                      controller.rewind(); // Rewind if not left or right swipe
+                    }
+                  },
+                  builder: (context, properties) {
+                    final index = properties.index % infiniteImages.length;
+
+                    return StatefulBuilder(
+                      builder: (context, setState) {
+                        return CardWidget(
+                          index: index,
+                          image: infiniteImages[index],
+                          category: infiniteCategories[index],
+                          name: infiniteFoodsOrActivities[index],
+                          description: infiniteDescriptions[index],
+                          isExpanded: _expandedStates[index] ?? false,
+                          onToggleDescription: () {
+                            setState(() {
+                              _expandedStates[index] = !(_expandedStates[index] ?? false);
+                            });
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -208,33 +238,40 @@ class _CardWidgetState extends State<CardWidget> {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 8),
-                    // Expandable Description
-                    if (widget.isExpanded)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          widget.description,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
+                    // Expandable Description with animation
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      height: widget.isExpanded ? 30 : 0, // Animate height
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child: widget.isExpanded
+                            ? Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            widget.description,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
                           ),
+                        )
+                            : SizedBox.shrink(),
+                      ),
+                    ),
+                    // Arrow in the center at the bottom
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: GestureDetector(
+                        onTap: widget.onToggleDescription,
+                        child: Icon(
+                          widget.isExpanded ? Icons.expand_less : Icons.expand_more,
+                          color: Colors.white,
+                          size: 30,
                         ),
                       ),
+                    ),
                   ],
-                ),
-              ),
-            ),
-            // Expand/Collapse Arrow
-            Positioned(
-              bottom: 8,
-              right: 8,
-              child: GestureDetector(
-                onTap: widget.onToggleDescription,
-                child: Icon(
-                  widget.isExpanded ? Icons.expand_less : Icons.expand_more,
-                  color: Colors.white,
-                  size: 30,
                 ),
               ),
             ),
