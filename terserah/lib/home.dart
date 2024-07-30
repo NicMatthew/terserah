@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/profile.dart';
 
 void main() {
   runApp(MyAppHome());
@@ -25,70 +26,112 @@ class HomeScreen extends StatelessWidget {
           children: [
             SizedBox(height: 40),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Spacer(),
-                Center(
-                  child:Text(
-                    'Lokasi Saya\nPantai Indah Kapuk',
-                    style: TextStyle(fontSize: 14, color: Colors.grey),
-                    textAlign: TextAlign.center,
-                  ),
+                SizedBox(width: 40,),
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 14),
+                      child:
+                      Icon(Icons.location_on, color: Color.fromRGBO(65, 139, 140, 1)),
+                    ),
+
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Lokasi Saya',
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                        Text(
+                          'Pantai Indah Kapuk',
+                          style: TextStyle(fontSize: 16, color: Color.fromRGBO(65, 139, 140, 1)),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                Spacer(),
-                Icon(Icons.person, color: Colors.grey),
+                ElevatedButton(
+                  onPressed: () {
+                    // Navigasi ke halaman profil
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyAppProfile()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+                  ),
+                  child: Image.asset('assets/user-profile-circle.png'),
+                ),
               ],
             ),
             SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.only(left: 75), // Add padding here
+              padding: const EdgeInsets.only(left: 55, top: 40),
               child: Text(
                 'Hai, Mitiuw!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromRGBO(65, 139, 140, 1)),
               ),
             ),
             SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.only(left: 75), // Add padding here
+              padding: const EdgeInsets.only(left: 55, right: 55),
               child: Text(
                 'Kamu mau ngapain hari ini?',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 35, color: Color.fromRGBO(65, 139, 140, 1)),
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 60),
             Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CategoryButton(
-                    imagePath: 'assets/semua_category.png',
-                    label: 'Semua',
-                    onTap: () {},
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CategoryButton(
+                        imagePath: 'assets/semua_category.png',
+                        label: 'Semua',
+                        onTap: () {},
+                      ),
+                      CategoryButton(
+                        imagePath: 'assets/makan_category.png',
+                        label: 'Makan',
+                        onTap: () {},
+                      ),
+                    ],
                   ),
-                  CategoryButton(
-                    imagePath: 'assets/makan_category.png',
-                    label: 'Makan',
-                    onTap: () {},
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CategoryButton(
+                        imagePath: 'assets/olahraga_category.png',
+                        label: 'Olahraga',
+                        onTap: () {},
+                      ),
+                      CategoryButton(
+                        imagePath: 'assets/rekreasi_category.png',
+                        label: 'Rekreasi',
+                        onTap: () {},
+                      ),
+                    ],
                   ),
-                  CategoryButton(
-                    imagePath: 'assets/olahraga_category.png',
-                    label: 'Olahraga',
-                    onTap: () {},
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CategoryButton(
+                        imagePath: 'assets/me_time.png',
+                        label: 'Me time',
+                        onTap: () {},
+                      ),
+                    ],
                   ),
-                  CategoryButton(
-                    imagePath: 'assets/rekreasi_category.png',
-                    label: 'Rekreasi',
-                    onTap: () {},
-                  ),
-                  SizedBox.shrink(),
-                  CategoryButton(
-                    imagePath: 'assets/me_time.png',
-                    label: 'Me time',
-                    onTap: () {},
-                  ),
-                  SizedBox.shrink(),
                 ],
               ),
             ),
@@ -120,9 +163,9 @@ class CategoryButton extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.teal,
+              color: Color.fromRGBO(65, 139, 140, 1),
             ),
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(30),
             child: Image.asset(
               imagePath,
               width: 40,
@@ -131,8 +174,27 @@ class CategoryButton extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          Text(label),
+          Text(
+            label,
+            style: TextStyle(
+              color: Color.fromRGBO(65, 139, 140, 1),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+      ),
+      body: Center(
+        child: Text('Ini adalah halaman profil.'),
       ),
     );
   }
