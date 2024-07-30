@@ -41,8 +41,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
         ),
-        // Add this to prevent the title from being pushed to the left
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false, // Add this to prevent the title from being pushed to the left
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -69,7 +68,6 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
 
 class ProfileHeader extends StatelessWidget {
   @override
@@ -166,7 +164,20 @@ class RecommendationList extends StatelessWidget {
   }
 }
 
-class RecommendationCard extends StatelessWidget {
+class RecommendationCard extends StatefulWidget {
+  @override
+  _RecommendationCardState createState() => _RecommendationCardState();
+}
+
+class _RecommendationCardState extends State<RecommendationCard> {
+  bool _isFavorited = false;
+
+  void _toggleFavorite() {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -203,12 +214,14 @@ class RecommendationCard extends StatelessWidget {
             ),
           ],
         ),
-        trailing: Icon(
-          Icons.favorite_border,
-          color: Color.fromRGBO(65, 139, 140, 1),
+        trailing: IconButton(
+          icon: Icon(
+            _isFavorited ? Icons.favorite : Icons.favorite_border,
+            color: Color.fromRGBO(65, 139, 140, 1),
+          ),
+          onPressed: _toggleFavorite,
         ),
       ),
     );
   }
 }
-
