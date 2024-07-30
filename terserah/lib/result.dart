@@ -76,7 +76,7 @@ class MyHomePage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.teal,
+                color: Color.fromRGBO(65, 139, 140, 1),
               ),
             ),
             SizedBox(height: 5),
@@ -96,7 +96,8 @@ class MyHomePage extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      title: Text("RM Masakan Padang Uda Uni, Abdul Syukur",
+                      title: Text(
+                        "RM Masakan Padang Uda Uni, Abdul Syukur",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color.fromRGBO(65, 139, 140, 1),
@@ -104,17 +105,33 @@ class MyHomePage extends StatelessWidget {
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text("Jl. Abdul Syukur No. 10, Margadana, Tegal",
-                            style: TextStyle(
-                              color: Color.fromRGBO(65, 139, 140, 1),
-                            ),
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: Color.fromRGBO(65, 139, 140, 1),
+                                size: 16,
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  "Jl. Abdul Syukur No. 10, Margadana, Tegal",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(65, 139, 140, 1),
+                                  ),
+                                  softWrap: true, // Allows text to wrap
+                                ),
+                              ),
+                            ],
                           ),
+                          SizedBox(height: 4), // Add spacing between rows
                           Row(
                             children: [
                               Icon(Icons.star, color: Colors.amber, size: 16),
                               SizedBox(width: 4),
-                              Text("4.5",
+                              Text(
+                                "4.5",
                                 style: TextStyle(
                                   color: Color.fromRGBO(65, 139, 140, 1),
                                 ),
@@ -134,4 +151,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
