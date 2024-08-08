@@ -22,30 +22,43 @@ class UserInfoScreen extends StatefulWidget {
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
   int _currentStep = 0;
+  int? _selectedAgeIndex; // Variabel untuk menyimpan jawaban umur
+  int? _selectedGenderIndex; // Variabel untuk menyimpan jawaban gender
 
   void _nextStep() {
     setState(() {
-      if (_currentStep < 3) { // Update to the total number of steps - 1
+      if (_currentStep < 3) {
         _currentStep++;
       }
     });
   }
 
-  Widget _buildOptionButtonWithImage({required String imagePath, required double size}) {
+  Widget _buildOptionButtonWithImage({required String imagePath, required double size, required int index, required int step}) {
+    bool isSelected = (step == 0 && _selectedGenderIndex == index) || (step == 1 && _selectedAgeIndex == index);
     return Container(
       width: size - 10,
       height: size - 10,
+      decoration: BoxDecoration(
+        border: isSelected ? Border.all(color: Color.fromRGBO(123, 210, 210, 1), width: 3.0) : null,
+        borderRadius: BorderRadius.circular(100),
+      ),
       child: ElevatedButton(
         onPressed: () {
-          // Tambahkan logika onPressed Anda di sini
+          setState(() {
+            if (step == 0) {
+              _selectedGenderIndex = index;
+            } else {
+              _selectedAgeIndex = index;
+            }
+          });
         },
         child: Image.asset(
           imagePath,
-          width: 50,  // Ukuran gambar di dalam tombol, sesuaikan sesuai kebutuhan
-          height: 50,  // Ukuran gambar di dalam tombol, sesuaikan sesuai kebutuhan
+          width: 50,
+          height: 50,
         ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromRGBO(65, 139, 140, 1),  // Sesuaikan warna tombol
+          backgroundColor: Color.fromRGBO(65, 139, 140, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
           ),
@@ -54,212 +67,25 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     );
   }
 
-
-
-  Widget _buildStepContent() {
-    switch (_currentStep) {
-      case 0:
-        return Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(height: 20,),
-              Text(
-                'Umur kamu berapa?',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(65, 139, 140, 1),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildOptionButton(text: '12-20'),
-                  _buildOptionButton(text: '21-45'),
-                  _buildOptionButton(text: '> 46'),
-                ],
-              ),
-              SizedBox(height: 30),
-              Text(
-                'Apa gender kamu?',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(65, 139, 140, 1),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      _buildOptionButtonWithImage(imagePath: 'assets/male.png', size: 110),
-                      SizedBox(height: 15),  // Jarak antara gambar dan teks
-                      Text(
-                        'Cowo',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Color.fromRGBO(65, 139, 140, 1),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      _buildOptionButtonWithImage(imagePath: 'assets/female.png', size: 110),
-                      SizedBox(height: 15),  // Jarak antara gambar dan teks
-                      Text(
-                        'Cewe',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Color.fromRGBO(65, 139, 140, 1),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          )
-        );
-      case 1:
-        return Container(
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                'Status kamu apa nih?',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(65, 139, 140, 1),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildOptionButton(text: 'Jomblo', size: 120),
-                  _buildOptionButton(text: 'Pacaran', size: 120),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildOptionButton(text: 'Menikah', size: 120),
-                  _buildOptionButton(text: 'Berkeluarga', size: 120),
-                ],
-              ),
-            ],
-          )
-        );
-      case 2:
-        return Container(
-          width: 300,
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 260,
-              child: Column(
-                children: [
-                  Text(
-                    'Kamu lebih suka beraktivitas dimana?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(65, 139, 140, 1),
-                    ),
-                  ),
-                  Text(
-                    "Bisa pilih lebih dari satu",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 18,
-                      fontStyle: FontStyle.italic,
-                      color: Color.fromRGBO(65, 139, 140, 1),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 30,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildOptionButton(text: 'Indoor', size: 120),
-                _buildOptionButton(text: 'Outdoor', size: 120),
-              ],
-            ),
-          ],
-        )
-      );
-      case 3:
-        return Container(
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Domisili kamu sekarang',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(65, 139, 140, 1),
-                ),
-              ),
-              SizedBox(height: 20,),
-              TextField(
-                decoration: InputDecoration(
-                  fillColor: Color.fromRGBO(255, 255, 255, 1),
-                  filled: true,
-                  hintText: 'Ketik lokasi',
-                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton.icon(
-                  onPressed: () {
-
-                  },
-                  icon: Icon(Icons.location_on),
-                  label: Text('Gunakan lokasi terkini'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(65, 139, 140, 1),
-                    foregroundColor: Color.fromRGBO(255, 255, 255, 1),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      default:
-        return Container();
-    }
-  }
-
-  Widget _buildOptionButton({String text = "button", double size = 100.00}) {
+  Widget _buildOptionButton({required String text, required int index, double size = 100.00, required int step}) {
+    bool isSelected = (step == 0 && _selectedAgeIndex == index) || (step == 1 && _selectedGenderIndex == index);
     return Container(
       width: size,
       height: size,
+      decoration: BoxDecoration(
+        border: isSelected ? Border.all(color: Color.fromRGBO(123, 210, 210, 1), width: 3.0) : null,
+        borderRadius: BorderRadius.circular(size / 2),
+      ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            if (step == 0) {
+              _selectedAgeIndex = index;
+            } else {
+              _selectedGenderIndex = index;
+            }
+          });
+        },
         child: Text(
           text,
           style: TextStyle(
@@ -268,24 +94,223 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(), backgroundColor: Color.fromRGBO(65, 139, 140, 1),
+          shape: CircleBorder(),
+          backgroundColor: Color.fromRGBO(65, 139, 140, 1),
           padding: EdgeInsets.all(10),
         ),
       ),
     );
   }
 
+  Widget _buildStepContent() {
+    switch (_currentStep) {
+      case 0:
+        return Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(height: 20,),
+                Text(
+                  'Umur kamu berapa?',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(65, 139, 140, 1),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildOptionButton(text: '12-20', index: 0, step: 0),
+                    _buildOptionButton(text: '21-45', index: 1, step: 0),
+                    _buildOptionButton(text: '> 46', index: 2, step: 0),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Text(
+                  'Apa gender kamu?',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(65, 139, 140, 1),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        _buildOptionButtonWithImage(imagePath: 'assets/male.png', size: 110, index: 3, step: 0),
+                        SizedBox(height: 15),
+                        Text(
+                          'Cowo',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromRGBO(65, 139, 140, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        _buildOptionButtonWithImage(imagePath: 'assets/female.png', size: 110, index: 4, step: 0),
+                        SizedBox(height: 15),
+                        Text(
+                          'Cewe',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromRGBO(65, 139, 140, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            )
+        );
+      case 1:
+        return Container(
+            width: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  'Status kamu apa nih?',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(65, 139, 140, 1),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildOptionButton(text: 'Jomblo', index: 5, size: 120, step: 1),
+                    _buildOptionButton(text: 'Pacaran', index: 6, size: 120, step: 1),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildOptionButton(text: 'Menikah', index: 7, size: 120, step: 1),
+                    _buildOptionButton(text: 'Berkeluarga', index: 8, size: 120, step: 1),
+                  ],
+                ),
+              ],
+            )
+        );
+      case 2:
+        return Container(
+            width: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 260,
+                  child: Column(
+                    children: [
+                      Text(
+                        'Kamu lebih suka beraktivitas dimana?',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(65, 139, 140, 1),
+                        ),
+                      ),
+                      Text(
+                        "Bisa pilih lebih dari satu",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 18,
+                          fontStyle: FontStyle.italic,
+                          color: Color.fromRGBO(65, 139, 140, 1),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildOptionButton(text: 'Indoor', index: 9, size: 120, step: 1),
+                    _buildOptionButton(text: 'Outdoor', index: 10, size: 120, step: 1),
+                  ],
+                ),
+              ],
+            )
+        );
+      case 3:
+        return Container(
+            width: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Domisili kamu sekarang',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(65, 139, 140, 1),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                TextField(
+                  decoration: InputDecoration(
+                    fillColor: Color.fromRGBO(255, 255, 255, 1),
+                    filled: true,
+                    hintText: 'Ketik lokasi',
+                    contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+
+                    },
+                    icon: Icon(Icons.location_on),
+                    label: Text('Gunakan lokasi terkini'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(65, 139, 140, 1),
+                      foregroundColor: Color.fromRGBO(255, 255, 255, 1),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+        );
+      default:
+        return Container();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFECF1EF), // Set background color here
+      backgroundColor: Color(0xFFECF1EF),
       body: Stack(
         children: [
           Column(
             children: [
               Container(
                 height: 180,
-                color: Color(0xFFECF1EF), // Match background color
+                color: Color(0xFFECF1EF),
                 padding: EdgeInsets.only(top: 50),
                 child: Center(
                   child: Column(
@@ -304,7 +329,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   ),
                 ),
               ),
-              // Main content area with space for progress bar and form
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -312,11 +336,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     child: Column(
                       children: [
                         SizedBox(
-                          width: 400, // Set the desired width here
+                          width: 400,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: LinearProgressIndicator(
-                              value: (_currentStep + 1) / 4, // Update the value based on the total steps
+                              value: (_currentStep + 1) / 4,
                               backgroundColor: Colors.grey[300],
                               color: Colors.teal,
                               minHeight: 6.0,
@@ -347,11 +371,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: (){
-                      if(_currentStep==3){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MyAppHome(),),);
-                      }
-                      else{
+                    onPressed: () {
+                      if (_currentStep == 3) {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MyAppHome(),),);
+                      } else {
                         _nextStep();
                       }
                     },

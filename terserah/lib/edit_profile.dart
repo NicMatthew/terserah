@@ -232,7 +232,7 @@ class UbahProfilWidget extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()))
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                 },
                 child: Text(
                   'Simpan',

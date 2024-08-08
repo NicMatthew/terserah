@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:terserah/profile.dart';
+import 'package:terserah/preference2.dart';
 
 void main() {
   runApp(MyAppHome());
@@ -96,12 +97,22 @@ class HomeScreen extends StatelessWidget {
                       CategoryButton(
                         imagePath: 'assets/semua_category.png',
                         label: 'Semua',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppPreference2()),
+                          );
+                        },
                       ),
                       CategoryButton(
                         imagePath: 'assets/makan_category.png',
                         label: 'Makan',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppPreference2()),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -112,12 +123,22 @@ class HomeScreen extends StatelessWidget {
                       CategoryButton(
                         imagePath: 'assets/olahraga_category.png',
                         label: 'Olahraga',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppPreference2()),
+                          );
+                        },
                       ),
                       CategoryButton(
                         imagePath: 'assets/rekreasi_category.png',
                         label: 'Rekreasi',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppPreference2()),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -128,7 +149,12 @@ class HomeScreen extends StatelessWidget {
                       CategoryButton(
                         imagePath: 'assets/me_time.png',
                         label: 'Me time',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppPreference2()),
+                          );
+                        },
                       ),
                     ],
                   ),
