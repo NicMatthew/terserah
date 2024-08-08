@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MyAppResult extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: MyHomePage(),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
+class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE5E5E5), // Set the background color to match the image
+      backgroundColor: Color(0xFFE5E5E5),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
         child: Column(
@@ -35,7 +24,7 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(height: 30),
                   Image.asset(
                     'assets/images/result.png',
-                    height: 100, // Adjust the height as needed
+                    height: 100,
                   ),
                   SizedBox(height: 30),
                   Column(
@@ -82,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             SizedBox(height: 5),
             Expanded(
               child: ListView.builder(
-                itemCount: 10, // Set the number of items in the list
+                itemCount: 10,
                 itemBuilder: (context, index) {
                   return Card(
                     margin: EdgeInsets.symmetric(vertical: 8),
@@ -90,56 +79,12 @@ class MyHomePage extends StatelessWidget {
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Image.asset(
-                          'assets/images/rmpadang.png',
-                          width: 60,
-                          height: 100,
+                          'assets/images/food.png',
                           fit: BoxFit.cover,
                         ),
                       ),
-                      title: Text(
-                        "RM Masakan Padang Uda Uni, Abdul Syukur",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(65, 139, 140, 1),
-                        ),
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on,
-                                color: Color.fromRGBO(65, 139, 140, 1),
-                                size: 16,
-                              ),
-                              SizedBox(width: 8),
-                              Expanded(
-                                child: Text(
-                                  "Jl. Abdul Syukur No. 10, Margadana, Tegal",
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(65, 139, 140, 1),
-                                  ),
-                                  softWrap: true, // Allows text to wrap
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 4), // Add spacing between rows
-                          Row(
-                            children: [
-                              Icon(Icons.star, color: Colors.amber, size: 16),
-                              SizedBox(width: 4),
-                              Text(
-                                "4.5",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(65, 139, 140, 1),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                      title: Text("Nasi Padang"),
+                      subtitle: Text("Rp 15.000"),
                     ),
                   );
                 },

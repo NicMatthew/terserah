@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'dart:async';
+import 'result.dart'; // Import the result page
 
 class SwipeCardDemo extends StatefulWidget {
   @override
@@ -124,7 +125,9 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
                   itemCount: infiniteImages.length,
                   onSwipeCompleted: (index, direction) {
                     // Handle swipe complete action here
-                    if (direction != SwipeDirection.left && direction != SwipeDirection.right) {
+                    if (direction == SwipeDirection.right) {
+                      _showConfirmationDialog(context);
+                    } else if (direction != SwipeDirection.left) {
                       controller.rewind(); // Rewind if not left or right swipe
                     }
                   },
@@ -157,6 +160,80 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
       ),
     );
   }
+
+  void _showConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Color.fromRGBO(236, 241, 239, 1), // Background color similar to the image
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0), // Rounded corners
+          ),
+          title: Text(
+            'Sudah yakin dengan pilihan kamu?',
+            textAlign: TextAlign.center, // Center the title text
+            style: TextStyle(
+              color: Color.fromRGBO(65, 139, 140, 1), // Text color matching the image
+              fontSize: 18.0, // Font size
+              fontWeight: FontWeight.bold, // Font weight
+            ),
+          ),
+          actionsAlignment: MainAxisAlignment.center, // Center the actions
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.transparent, // Transparent background for "Coba lagi"
+                side: BorderSide(
+                  color: Color.fromRGBO(65, 139, 140, 1), // Border color matching the image
+                  width: 2.0, // Border width
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0), // Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0), // Button padding
+              ),
+              child: Text(
+                'Coba lagi',
+                style: TextStyle(
+                  color: Color.fromRGBO(65, 139, 140, 1), // Text color matching the border
+                  fontSize: 16.0, // Font size
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            SizedBox(width: 10), // Space between buttons
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Color.fromRGBO(65, 139, 140, 1), // Background color matching the image
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0), // Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0), // Button padding
+              ),
+              child: Text(
+                'Yakin',
+                style: TextStyle(
+                  color: Colors.white, // Text color for "Yakin"
+                  fontSize: 16.0, // Font size
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResultPage()),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 }
 
 class CardWidget extends StatefulWidget {
