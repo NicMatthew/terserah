@@ -31,9 +31,9 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
   ];
 
   List<String> descriptions = [
-    'Deskripsi Nasi Goreng. Rating: 4.5/5',
-    'Deskripsi Sate Ayam. Rating: 4.7/5',
-    'Deskripsi Spaghetti. Rating: 4.6/5',
+    'Nasi goreng adalah hidangan khas Indonesia berupa nasi yang digoreng dengan bumbu seperti bawang putih, kecap manis, dan cabai, menghasilkan rasa gurih dan sedikit pedas. Biasanya disajikan dengan telur, ayam, atau udang, dan menjadi pilihan populer untuk sarapan atau makan malam.',
+    'Sate ayam adalah potongan daging ayam yang dipanggang di atas arang, disajikan dengan saus kacang yang manis dan gurih. Hidangan khas Indonesia ini sering dinikmati sebagai makanan ringan atau lauk, dan terkenal dengan aroma dan rasanya yang menggugah selera.',
+    'Spageti adalah pasta khas Italia yang berupa mie panjang dan biasanya disajikan dengan saus seperti bolognese atau carbonara. Hidangan ini terkenal di seluruh dunia karena rasanya yang lezat dan cocok dinikmati sebagai makan siang atau makan malam.',
     // Add more descriptions if needed
   ];
 
@@ -123,6 +123,7 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
                 child: SwipableStack(
                   controller: controller,
                   itemCount: infiniteImages.length,
+                  allowVerticalSwipe: false,
                   onSwipeCompleted: (index, direction) {
                     // Handle swipe complete action here
                     if (direction == SwipeDirection.right) {
@@ -292,11 +293,12 @@ class _CardWidgetState extends State<CardWidget> {
                   ),
                 ),
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
+                child: // Tambahkan di bawah deskripsi
+                Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Category
+                    // Kategori
                     Text(
                       widget.category,
                       style: TextStyle(
@@ -306,7 +308,7 @@ class _CardWidgetState extends State<CardWidget> {
                       ),
                     ),
                     SizedBox(height: 8),
-                    // Name of activity or food
+                    // Nama makanan atau aktivitas
                     Text(
                       widget.name,
                       style: TextStyle(
@@ -315,28 +317,61 @@ class _CardWidgetState extends State<CardWidget> {
                         color: Colors.white,
                       ),
                     ),
-                    // Expandable Description with animation
+                    // Deskripsi yang bisa diperluas
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
-                      height: widget.isExpanded ? 30 : 0, // Animate height
+                      height: widget.isExpanded ? null : 0, // Animate height
                       child: AnimatedSwitcher(
                         duration: const Duration(milliseconds: 300),
                         child: widget.isExpanded
-                            ? Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(
-                            widget.description,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
+                            ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                widget.description,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          ),
+                            // Bar Rating dan Asal Rating
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: LinearProgressIndicator(
+                                    value: 0.9, // Contoh nilai rating, bisa diganti sesuai data
+                                    color: Colors.yellow,
+                                    backgroundColor: Colors.white.withOpacity(0.3),
+                                  ),
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  '4.5', // Contoh rating, bisa diganti sesuai data
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                SizedBox(width: 4),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 18,
+                                ),
+                                SizedBox(width: 8),
+                                Image.asset(
+                                  'assets/google-icon.png', // Path ke ikon Google atau sumber lain
+                                  height: 50,
+                                ),
+                              ],
+                            ),
+                          ],
                         )
                             : SizedBox.shrink(),
                       ),
                     ),
-                    // Arrow in the center at the bottom
+                    // Panah di tengah bawah
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: GestureDetector(
@@ -350,6 +385,7 @@ class _CardWidgetState extends State<CardWidget> {
                     ),
                   ],
                 ),
+
               ),
             ),
           ],
