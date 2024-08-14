@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Helvetica',
       ),
       home: SwipeCardDemo(),
-      // routes:{
+      routes:{
       //   '/preferencestart':(context)=>MyAppPreference(),
       //   '/home': (context)=> MyAppHome(),
       //   '/profile': (context)=> MyAppProfile(),
-      // },
+      },
     );
   }
 }

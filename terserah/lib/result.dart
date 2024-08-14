@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
+import 'home.dart';
+
 class ResultPage extends StatefulWidget {
   @override
   _ResultPageState createState() => _ResultPageState();
@@ -74,7 +76,12 @@ class _ResultPageState extends State<ResultPage> {
                       ),
                       SizedBox(height: 16),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppHome(),),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(65, 139, 140, 1),
                           foregroundColor: Colors.white,
