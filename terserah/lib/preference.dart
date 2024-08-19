@@ -328,30 +328,32 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: 400,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: LinearProgressIndicator(
-                          value: (_currentStep + 1) / 4,
-                          backgroundColor: Colors.grey[300],
-                          color: Colors.teal,
-                          minHeight: 6.0,
-                        ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 400,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: LinearProgressIndicator(
+                        value: (_currentStep + 1) / 4,
+                        backgroundColor: Colors.grey[300],
+                        color: Colors.teal,
+                        minHeight: 6.0,
                       ),
                     ),
-                    SizedBox(height: 30),
-                    Container(
-                      height: 400,
-                      child: _buildStepContent(),
+                  ),
+                  SizedBox(height: 30),
+                  Expanded( // Gunakan Expanded untuk membatasi area yang dapat di-scroll
+                    child: SingleChildScrollView(
+                      child: Container(
+                        height: 400,
+                        child: _buildStepContent(),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
