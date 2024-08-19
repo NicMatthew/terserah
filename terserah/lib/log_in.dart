@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/preference.dart';
+import 'package:terserah/sign_in.dart';
 
 class LogIn extends StatelessWidget {
   @override
@@ -109,7 +111,10 @@ class LogInWidget extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyAppPreference()),
+                      );
                     },
                     child: Text(
                       "Masuk",
@@ -132,7 +137,10 @@ class LogInWidget extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignIn()),
+                          );
                         },
                         child: Text(
                           "Daftar",

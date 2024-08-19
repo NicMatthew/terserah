@@ -20,75 +20,73 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(width: 40,),
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 14),
-                      child:
-                      Icon(Icons.location_on, color: Color.fromRGBO(65, 139, 140, 1)),
-                    ),
-
-                    SizedBox(width: 5),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Lokasi Saya',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                        Text(
-                          'Pantai Indah Kapuk',
-                          style: TextStyle(fontSize: 16, color: Color.fromRGBO(65, 139, 140, 1)),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigasi ke halaman profil
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyAppProfile()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    elevation: 0,
+      body: SingleChildScrollView( // Added this line
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(width: 40),
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(top: 14),
+                        child: Icon(Icons.location_on, color: Color.fromRGBO(65, 139, 140, 1)),
+                      ),
+                      SizedBox(width: 5),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Lokasi Saya',
+                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                          ),
+                          Text(
+                            'Pantai Indah Kapuk',
+                            style: TextStyle(fontSize: 16, color: Color.fromRGBO(65, 139, 140, 1)),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  child: Image.asset('assets/user-profile-circle.png'),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigasi ke halaman profil
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyAppProfile()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      elevation: 0,
+                    ),
+                    child: Image.asset('assets/user-profile-circle.png'),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 55, top: 40),
+                child: Text(
+                  'Hai, Mitiuw!',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromRGBO(65, 139, 140, 1)),
                 ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 55, top: 40),
-              child: Text(
-                'Hai, Mitiuw!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromRGBO(65, 139, 140, 1)),
               ),
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(left: 55, right: 55),
-              child: Text(
-                'Kamu mau ngapain hari ini?',
-                style: TextStyle(fontSize: 35, color: Color.fromRGBO(65, 139, 140, 1)),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(left: 55, right: 55),
+                child: Text(
+                  'Kamu mau ngapain hari ini?',
+                  style: TextStyle(fontSize: 35, color: Color.fromRGBO(65, 139, 140, 1)),
+                ),
               ),
-            ),
-            SizedBox(height: 60),
-            Expanded(
-              child: Column(
+              SizedBox(height: 60),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
@@ -160,8 +158,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -212,16 +210,23 @@ class CategoryButton extends StatelessWidget {
   }
 }
 
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
-      body: Center(
-        child: Text('Ini adalah halaman profil.'),
-      ),
-    );
-  }
-}
+// class MyAppProfile extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ProfileScreen();
+//   }
+// }
+//
+// class ProfileScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Profile'),
+//       ),
+//       body: Center(
+//         child: Text('Ini adalah halaman profil.'),
+//       ),
+//     );
+//   }
+

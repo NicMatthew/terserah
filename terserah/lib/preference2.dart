@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:terserah/home.dart';
+import 'package:terserah/swipe_activites.dart';
 
 void main() {
   runApp(MyAppPreference2());
@@ -284,10 +285,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_currentStep == 3) {
+                      if (_currentStep == 2) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MyAppHome()),
+                          MaterialPageRoute(builder: (context) => SwipeCardDemo()),
                         );
                       } else {
                         _nextStep();

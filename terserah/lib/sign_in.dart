@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/log_in.dart';
 
 void main() {
   runApp(SignIn());
@@ -208,7 +209,10 @@ class SignInWidget extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LogIn()),
+                      );
                     },
                     child: Text(
                       "Daftar",
@@ -231,7 +235,10 @@ class SignInWidget extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LogIn()),
+                          );
                         },
                         child: Text(
                           "Masuk",

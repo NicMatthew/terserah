@@ -61,7 +61,7 @@ class UbahProfilWidget extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Masukan nama anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
+                      fillColor: Colors.white, // Changed to white
                       filled: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                       border: OutlineInputBorder(
@@ -90,7 +90,7 @@ class UbahProfilWidget extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Masukan tanggal lahir anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
+                      fillColor: Colors.white, // Changed to white
                       filled: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                       border: OutlineInputBorder(
@@ -119,7 +119,7 @@ class UbahProfilWidget extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Masukan domisili anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
+                      fillColor: Colors.white, // Changed to white
                       filled: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                       border: OutlineInputBorder(
@@ -147,8 +147,7 @@ class UbahProfilWidget extends StatelessWidget {
                   height: 40,
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
-                      hintText: "Masukan email anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
+                      fillColor: Colors.white, // Changed to white
                       filled: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                       border: OutlineInputBorder(
@@ -184,7 +183,7 @@ class UbahProfilWidget extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Masukan email anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
+                      fillColor: Colors.white, // Changed to white
                       filled: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                       border: OutlineInputBorder(
@@ -214,7 +213,7 @@ class UbahProfilWidget extends StatelessWidget {
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Masukan kata sandi anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
+                      fillColor: Colors.white, // Changed to white
                       filled: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                       border: OutlineInputBorder(
@@ -242,7 +241,8 @@ class UbahProfilWidget extends StatelessWidget {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15), backgroundColor: Colors.teal,
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  backgroundColor: Colors.teal,
                 ),
               ),
             ),
