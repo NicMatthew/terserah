@@ -13,7 +13,7 @@ class SignIn extends StatelessWidget {
       title: 'Sign In',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
-        fontFamily: 'Helvetice',
+        fontFamily: 'Helvetica',
       ),
       home: SignInWidget(),
     );
@@ -25,181 +25,38 @@ class SignInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(230, 230, 230, 1),
-      body: Center(
-        child: Container(
-          height: 740,
-          width: 350,
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(255, 255, 255, 1), // Latar belakang putih
-            borderRadius: BorderRadius.circular(15.0), // Border radius untuk sudut membulat
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Container(
-                          child: Image.asset("assets/terserah_logo.png", width: 180,),
-                        ),
-                      ),
-                    ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 30),
+            width: 350,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(255, 255, 255, 1), // Latar belakang putih
+              borderRadius: BorderRadius.circular(15.0), // Border radius untuk sudut membulat
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Center(
+                      child: Image.asset("assets/terserah_logo.png", width: 180,),
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Nama",
-                      style: TextStyle(
-                        color: Color.fromRGBO(65, 139, 140, 1),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      height: 40,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Masukan nama anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Tanggal Lahir",
-                      style: TextStyle(
-                        color: Color.fromRGBO(65, 139, 140, 1),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      height: 40,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Masukan tanggal lahir anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Domisili",
-                      style: TextStyle(
-                        color: Color.fromRGBO(65, 139, 140, 1),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      height: 40,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Masukan domisili anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Email",
-                      style: TextStyle(
-                        color: Color.fromRGBO(65, 139, 140, 1),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      height: 40,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Masukan email anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Kata Sandi",
-                      style: TextStyle(
-                        color: Color.fromRGBO(65, 139, 140, 1),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      height: 40,
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: "Masukan kata sandi anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20), // Increased space between last TextField and button
-                Container(
-                  child: ElevatedButton(
+                  SizedBox(height: 20),
+                  _buildTextField(context, "Nama", "Masukan nama anda"),
+                  SizedBox(height: 15),
+                  _buildTextField(context, "Tanggal Lahir", "Masukan tanggal lahir anda"),
+                  SizedBox(height: 15),
+                  _buildTextField(context, "Domisili", "Masukan domisili anda"),
+                  SizedBox(height: 15),
+                  _buildTextField(context, "Email", "Masukan email anda"),
+                  SizedBox(height: 15),
+                  _buildTextField(context, "Kata Sandi", "Masukan kata sandi anda", obscureText: true),
+                  SizedBox(height: 20),
+                  ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 40),
                       backgroundColor: Color.fromRGBO(65, 139, 140, 1),
@@ -222,9 +79,8 @@ class SignInWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  child: Row(
+                  SizedBox(height: 20),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
@@ -250,12 +106,44 @@ class SignInWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTextField(BuildContext context, String label, String hint, {bool obscureText = false}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            color: Color.fromRGBO(65, 139, 140, 1),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 5),
+        Container(
+          height: 40,
+          child: TextField(
+            obscureText: obscureText,
+            decoration: InputDecoration(
+              hintText: hint,
+              fillColor: Color.fromRGBO(240, 240, 240, 1), // Ubah warna latar belakang di sini
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50),
+                  borderSide: BorderSide.none
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
