@@ -5,6 +5,7 @@ class UbahProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ubah Profil',
       theme: ThemeData(
         primarySwatch: Colors.teal,
