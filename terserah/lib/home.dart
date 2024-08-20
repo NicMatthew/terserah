@@ -75,9 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
               Padding(
-                padding: const EdgeInsets.only(left: 55, top: 40),
+                padding: const EdgeInsets.only(left: 40, right: 40),
                 child: Text(
                   'Hai, Mitiuw!',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromRGBO(65, 139, 140, 1)),
@@ -85,13 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.only(left: 55, right: 55),
+                padding: const EdgeInsets.only(left: 40, right: 40),
                 child: Text(
                   'Kamu mau ngapain hari ini?',
                   style: TextStyle(fontSize: 35, color: Color.fromRGBO(65, 139, 140, 1)),
                 ),
               ),
-              SizedBox(height: 60),
+              SizedBox(height: 40),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

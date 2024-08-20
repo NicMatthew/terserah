@@ -128,17 +128,17 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     children: [
                       _buildOptionButtonWithImage(
                           imagePath: 'assets/Expression1.png',
-                          size: 110,
+                          size: 100,
                           index: 1),
                       SizedBox(width: 20),
                       _buildOptionButtonWithImage(
                           imagePath: 'assets/Expression2.png',
-                          size: 110,
+                          size: 100,
                           index: 2),
                       SizedBox(width: 20),
                       _buildOptionButtonWithImage(
                           imagePath: 'assets/Expression3.png',
-                          size: 110,
+                          size: 100,
                           index: 3),
                     ],
                   ),
@@ -150,12 +150,12 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     children: [
                       _buildOptionButtonWithImage(
                           imagePath: 'assets/Expression4.png',
-                          size: 110,
+                          size: 100,
                           index: 4),
                       SizedBox(width: 20),
                       _buildOptionButtonWithImage(
                           imagePath: 'assets/Expression5.png',
-                          size: 110,
+                          size: 100,
                           index: 5),
                     ],
                   ),
@@ -263,7 +263,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 ),
               ),
               SizedBox(
-                width: 400,
+                width: 350,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: LinearProgressIndicator(

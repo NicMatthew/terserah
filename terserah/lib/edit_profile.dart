@@ -266,11 +266,11 @@ class UbahProfilWidget extends StatelessWidget {
               filled: false,
               contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide.none,
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide(
                   color: borderColor,
                   width: borderWidth,

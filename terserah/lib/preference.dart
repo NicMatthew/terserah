@@ -304,6 +304,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFECF1EF),
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Container(
@@ -329,7 +330,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(25.0),
               child: Column(
                 children: [
                   SizedBox(

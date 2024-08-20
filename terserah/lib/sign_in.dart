@@ -23,38 +23,45 @@ class SignIn extends StatelessWidget {
 class SignInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Menambahkan padding bawah untuk menghindari konten tertutup keyboard
+    final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(230, 230, 230, 1),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            margin: EdgeInsets.symmetric(vertical: 30),
+            margin: EdgeInsets.symmetric(vertical: 80),
             width: 350,
             decoration: BoxDecoration(
               color: Color.fromRGBO(255, 255, 255, 1), // Latar belakang putih
               borderRadius: BorderRadius.circular(15.0), // Border radius untuk sudut membulat
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
               child: Column(
+                mainAxisSize: MainAxisSize.min, // Menjaga kolom tetap di tengah secara vertikal
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Center(
-                      child: Image.asset("assets/terserah_logo.png", width: 180,),
+                      child: Image.asset(
+                        "assets/terserah_logo.png",
+                        width: 180,
+                      ),
                     ),
                   ),
                   SizedBox(height: 20),
-                  _buildTextField(context, "Nama", "Masukan nama anda"),
+                  _buildTextField(context, "Nama", "Masukkan nama Anda"),
                   SizedBox(height: 15),
-                  _buildTextField(context, "Tanggal Lahir", "Masukan tanggal lahir anda"),
+                  _buildTextField(context, "Tanggal Lahir", "Masukkan tanggal lahir Anda"),
                   SizedBox(height: 15),
-                  _buildTextField(context, "Domisili", "Masukan domisili anda"),
+                  _buildTextField(context, "Domisili", "Masukkan domisili Anda"),
                   SizedBox(height: 15),
-                  _buildTextField(context, "Email", "Masukan email anda"),
+                  _buildTextField(context, "Email", "Masukkan email Anda"),
                   SizedBox(height: 15),
-                  _buildTextField(context, "Kata Sandi", "Masukan kata sandi anda", obscureText: true),
+                  _buildTextField(context, "Kata Sandi", "Masukkan kata sandi Anda", obscureText: true),
                   SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -62,7 +69,7 @@ class SignInWidget extends StatelessWidget {
                       backgroundColor: Color.fromRGBO(65, 139, 140, 1),
                       foregroundColor: Color.fromRGBO(255, 255, 255, 1),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)
+                        borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                     onPressed: () {
@@ -137,8 +144,8 @@ class SignInWidget extends StatelessWidget {
               filled: true,
               contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide.none
+                borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide.none,
               ),
             ),
           ),

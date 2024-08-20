@@ -112,15 +112,15 @@ class _ResultPageState extends State<ResultPage> {
                         ),
                         child: Container(
                           padding: const EdgeInsets.all(16.0),
-                          height: 100, // Reduced height for the card
+                          height: 120, // Reduced height for the card
                           child: Row(
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
                                 child: Image.asset(
                                   'assets/images/rmpadang.png',
-                                  width: 60,
-                                  height: 60,
+                                  width: 80,
+                                  height: 80,
                                   fit: BoxFit.cover,
                                 ),
                               ),
