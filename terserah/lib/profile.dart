@@ -75,6 +75,7 @@ class ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CircleAvatar(
           radius: 40,
@@ -87,37 +88,46 @@ class ProfileHeader extends StatelessWidget {
             Text(
               "Mitiuw Salim",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Color.fromRGBO(65, 139, 140, 1),
               ),
             ),
-            // Add some space between the icon and text
             Text(
               "Jakarta, Indonesia",
               style: TextStyle(
+                fontSize: 14,
                 color: Color.fromRGBO(65, 139, 140, 1),
               ),
             ),
-            Text(
-              "Jomblo",
-              style: TextStyle(
-                color: Color.fromRGBO(179, 211, 200, 1),
-              ),
+            Row(
+              children: [
+                Text(
+                  "Jomblo",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color.fromRGBO(179, 211, 200, 1),
+                  ),
+                ),
+                SizedBox(width: 200), // Increased the width for more spacing
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UbahProfilPage(),
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    'assets/pencil.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
-        Spacer(),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => UbahProfilPage(),
-              ),
-            );
-          },
-          child: Icon(Icons.edit, color: Color.fromRGBO(65, 139, 140, 1)),
         ),
       ],
     );
@@ -208,6 +218,7 @@ class _RecommendationCardState extends State<RecommendationCard> {
           "Marugame Udon",
           style: TextStyle(
             color: Color.fromRGBO(65, 139, 140, 1),
+            fontWeight: FontWeight.bold,
           ),
         ),
         subtitle: Row(
