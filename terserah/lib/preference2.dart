@@ -188,8 +188,14 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildOptionButton(text: 'Sendiri', size: 110, index: 6),
-                _buildOptionButton(text: 'Bareng', size: 110, index: 7),
+                _buildOptionButtonWithImage(
+                    imagePath: 'assets/alone.png',
+                    size: 110,
+                    index: 6),
+                _buildOptionButtonWithImage(
+                    imagePath: 'assets/together.png',
+                    size: 110,
+                    index: 7),
               ],
             ),
           ],
