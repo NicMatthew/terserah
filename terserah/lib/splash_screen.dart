@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
         //   MaterialPageRoute(builder: (context) => HomeScreen()),
         //
         // );
-        Navigator.pushNamed(context, '/preferencestart');
+        Navigator.pushNamed(context, '/logIn');
       }
     });
   }
@@ -110,16 +110,3 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
-      ),
-      body: Center(
-        child: Text('Welcome to the Home Screen!'),
-      ),
-    );
-  }
-}

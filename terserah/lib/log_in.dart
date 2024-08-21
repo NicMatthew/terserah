@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:terserah/preference.dart';
+import 'package:terserah/sign_in.dart';
 
 class LogIn extends StatelessWidget {
   @override
@@ -33,10 +35,10 @@ class LogInWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                    child: Image.asset(
-                      "assets/terserah_logo.png",
-                      width: 140,
-                    ),
+                  child: Image.asset(
+                    "assets/terserah_logo.png",
+                    width: 140,
+                  ),
                 ),
                 SizedBox(height: 30),
                 Column(
@@ -55,7 +57,7 @@ class LogInWidget extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "Masukan email anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
+                          fillColor: Color.fromRGBO(240, 240, 240, 1), // Ubah warna latar belakang di sini
                           filled: true,
                           contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                           border: OutlineInputBorder(
@@ -85,7 +87,7 @@ class LogInWidget extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Masukan password anda",
-                          fillColor: Color.fromRGBO(230, 230, 230, 1),
+                          fillColor: Color.fromRGBO(240, 240, 240, 1), // Ubah warna latar belakang di sini
                           filled: true,
                           contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                           border: OutlineInputBorder(
@@ -105,11 +107,14 @@ class LogInWidget extends StatelessWidget {
                       backgroundColor: Color.fromRGBO(65, 139, 140, 1),
                       foregroundColor: Color.fromRGBO(255, 255, 255, 1),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
+                          borderRadius: BorderRadius.circular(50)
                       ),
                     ),
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyAppPreference()),
+                      );
                     },
                     child: Text(
                       "Masuk",
@@ -132,7 +137,10 @@ class LogInWidget extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignIn()),
+                          );
                         },
                         child: Text(
                           "Daftar",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:terserah/edit_profile.dart';
+import 'package:terserah/log_in.dart';
 import 'package:terserah/profile.dart';
 import 'package:terserah/sign_in.dart';
 import 'package:terserah/swipe_activites.dart';
@@ -21,12 +22,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Helvetica',
       ),
-      home: SwipeCardDemo(),
-      // routes:{
-      //   '/preferencestart':(context)=>MyAppPreference(),
-      //   '/home': (context)=> MyAppHome(),
-      //   '/profile': (context)=> MyAppProfile(),
-      // },
+      home: SplashScreen(),
+      routes:{
+        '/preferencestart':(context)=>MyAppPreference(),
+        '/home': (context)=> MyAppHome(),
+        '/profile': (context)=> MyAppProfile(),
+        '/logIn' : (context)=> LogIn(),
+      },
     );
   }
 }

@@ -5,9 +5,22 @@ class UbahProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ubah Profil',
       theme: ThemeData(
         primarySwatch: Colors.teal,
+        appBarTheme: AppBarTheme(
+          surfaceTintColor: Colors.transparent,
+          color: Color.fromRGBO(236, 241, 239, 1), // Warna latar belakang AppBar
+          foregroundColor: Color.fromRGBO(65, 139, 140, 1), // Warna teks di AppBar
+          elevation: 0, // Menghapus bayangan di AppBar
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.bold, // Membuat teks menjadi bold
+            fontSize: 22, // Ukuran font (opsional)
+            color: Color.fromRGBO(65, 139, 140, 1),
+          ),
+        ),
       ),
       home: UbahProfilWidget(),
     );
@@ -30,201 +43,97 @@ class UbahProfilWidget extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(40.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.grey[300],
-              child: Icon(Icons.person, size: 40, color: Colors.white),
+              radius: 60,
+              backgroundColor: Color.fromRGBO(179, 211, 200, 1),
+              child: Icon(Icons.person, size: 60, color: Colors.white),
             ),
             SizedBox(height: 8.0),
             Text(
               'Edit foto',
-              style: TextStyle(color: Colors.teal),
+              style: TextStyle(
+                  color: Colors.teal,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Nama",
-                  style: TextStyle(
-                    color: Color.fromRGBO(65, 139, 140, 1),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  height: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Masukan nama anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
-                      filled: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            _buildTextFieldSection(
+                context,
+                "Nama",
+                "Masukkan nama anda",
+                false,
+                false,
+                false,
+                false,
+                Colors.white,
+                Color.fromRGBO(65, 139, 149, 1),
+                2.0
             ),
             SizedBox(height: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Tanggal lahir",
-                  style: TextStyle(
-                    color: Color.fromRGBO(65, 139, 140, 1),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  height: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Masukan tanggal lahir anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
-                      filled: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            _buildTextFieldSection(
+                context,
+                "Tanggal lahir",
+                "Masukkan tanggal lahir anda",
+                false,
+                false,
+                false,
+                false,
+                Colors.white,
+                Color.fromRGBO(65, 139, 149, 1),
+                2.0
             ),
             SizedBox(height: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Domisili",
-                  style: TextStyle(
-                    color: Color.fromRGBO(65, 139, 140, 1),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  height: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Masukan domisili anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
-                      filled: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            _buildTextFieldSection(
+                context,
+                "Domisili",
+                "Masukkan domisili anda",
+                false,
+                false,
+                false,
+                false,
+                Colors.white,
+                Color.fromRGBO(65, 139, 149, 1),
+                2.0
             ),
             SizedBox(height: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Status",
-                  style: TextStyle(
-                    color: Color.fromRGBO(65, 139, 140, 1),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  height: 40,
-                  child: DropdownButtonFormField<String>(
-                    decoration: InputDecoration(
-                      hintText: "Masukan email anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
-                      filled: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none
-                      ),
-                    ),
-                    items: ['Single', 'Married', 'Other']
-                        .map((status) => DropdownMenuItem(
-                      value: status,
-                      child: Text(status),
-                    ))
-                        .toList(),
-                    onChanged: (value) {},
-                  ),
-                ),
-              ],
+            _buildDropdownSection(
+                context,
+                "Status",
+                ['Single', 'Married', 'Other'],
+                Colors.white,
+                Color.fromRGBO(65, 139, 149, 1),
+                2.0
             ),
             SizedBox(height: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Email",
-                  style: TextStyle(
-                    color: Color.fromRGBO(65, 139, 140, 1),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  height: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Masukan email anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
-                      filled: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            _buildTextFieldSection(
+                context,
+                "Email",
+                "Masukkan email anda",
+                false,
+                false,
+                false,
+                false,
+                Colors.white,
+                Color.fromRGBO(65, 139, 149, 1),
+                2.0
             ),
             SizedBox(height: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Kata sandi",
-                  style: TextStyle(
-                    color: Color.fromRGBO(65, 139, 140, 1),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  height: 40,
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Masukan kata sandi anda",
-                      fillColor: Color.fromRGBO(230, 230, 230, 1),
-                      filled: true,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            _buildTextFieldSection(
+                context,
+                "Kata sandi",
+                "Masukkan kata sandi anda",
+                false,
+                false,
+                false,
+                false,
+                Colors.white,
+                Color.fromRGBO(65, 139, 149, 1),
+                2.0
             ),
             SizedBox(height: 24.0),
             Container(
@@ -238,17 +147,167 @@ class UbahProfilWidget extends StatelessWidget {
                   'Simpan',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15), backgroundColor: Colors.teal,
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  backgroundColor: Color.fromRGBO(65, 139, 140, 1),
                 ),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTextFieldSection(
+      BuildContext context,
+      String label,
+      String hint,
+      bool filled,
+      bool obscureText,
+      bool isDropdown,
+      bool isEmail,
+      Color fillColor,
+      Color borderColor,
+      double borderWidth
+      ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            color: Color.fromRGBO(65, 139, 140, 1),
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 5),
+        Container(
+          height: 50,
+          child: isDropdown
+              ? DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              fillColor: fillColor,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50),
+                  borderSide: BorderSide.none
+              ),
+            ),
+            dropdownColor: Colors.white,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+            ),
+            items: ['Single', 'Married', 'Other']
+                .map((status) => DropdownMenuItem(
+              value: status,
+              child: Text(status),
+            ))
+                .toList(),
+            onChanged: (value) {},
+          )
+              : TextField(
+            obscureText: obscureText,
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: TextStyle(color: Color.fromRGBO(150, 150, 150, 1), fontWeight: FontWeight.normal),
+              fillColor: fillColor,
+              filled: filled,
+              contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50),
+                  borderSide: BorderSide.none
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide(
+                  color: borderColor,
+                  width: borderWidth,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide(
+                  color: borderColor,
+                  width: borderWidth,
+                ),
+              ),
+            ),
+
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDropdownSection(
+      BuildContext context,
+      String label,
+      List<String> items,
+      Color fillColor,
+      Color borderColor,
+      double borderWidth
+      ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            color: Color.fromRGBO(65, 139, 140, 1),
+            fontWeight: FontWeight.bold,
+            fontSize: 17,
+          ),
+        ),
+        SizedBox(height: 5),
+        Container(
+          height: 50,
+          child: DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              fillColor: fillColor,
+              filled: false,
+              contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide(
+                  color: borderColor,
+                  width: borderWidth,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide(
+                  color: borderColor,
+                  width: borderWidth,
+                ),
+              ),
+            ),
+            dropdownColor: Colors.white,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+              fontSize: 16,
+            ),
+            items: items
+                .map((status) => DropdownMenuItem(
+              value: status,
+              child: Text(status),
+            ))
+                .toList(),
+            onChanged: (value) {},
+          ),
+        ),
+      ],
     );
   }
 }

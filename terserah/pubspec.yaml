@@ -65,6 +65,7 @@ flutter:
     - assets/images/marugame.png
     - assets/images/result.png
     - assets/images/rmpadang.png
+    - assets/pencil.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

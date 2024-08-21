@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
+import 'home.dart';
+
 class ResultPage extends StatefulWidget {
   @override
   _ResultPageState createState() => _ResultPageState();
@@ -74,7 +76,12 @@ class _ResultPageState extends State<ResultPage> {
                       ),
                       SizedBox(height: 16),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyAppHome(),),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromRGBO(65, 139, 140, 1),
                           foregroundColor: Colors.white,
@@ -105,15 +112,15 @@ class _ResultPageState extends State<ResultPage> {
                         ),
                         child: Container(
                           padding: const EdgeInsets.all(16.0),
-                          height: 100, // Reduced height for the card
+                          height: 120, // Reduced height for the card
                           child: Row(
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
                                 child: Image.asset(
                                   'assets/images/rmpadang.png',
-                                  width: 60,
-                                  height: 60,
+                                  width: 80,
+                                  height: 80,
                                   fit: BoxFit.cover,
                                 ),
                               ),
