@@ -266,6 +266,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   fillColor: Color.fromRGBO(255, 255, 255, 1),
                   filled: true,
                   hintText: 'Ketik lokasi',
+                  hintStyle: TextStyle(color: Color.fromRGBO(205, 205, 205, 100)),
                   contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),

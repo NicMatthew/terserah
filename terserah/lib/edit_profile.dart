@@ -152,7 +152,7 @@ class UbahProfilWidget extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  backgroundColor: Colors.teal,
+                  backgroundColor: Color.fromRGBO(65, 139, 140, 1),
                 ),
               ),
             ),
@@ -199,6 +199,11 @@ class UbahProfilWidget extends StatelessWidget {
                   borderSide: BorderSide.none
               ),
             ),
+            dropdownColor: Colors.white,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+            ),
             items: ['Single', 'Married', 'Other']
                 .map((status) => DropdownMenuItem(
               value: status,
@@ -211,6 +216,7 @@ class UbahProfilWidget extends StatelessWidget {
             obscureText: obscureText,
             decoration: InputDecoration(
               hintText: hint,
+              hintStyle: TextStyle(color: Color.fromRGBO(150, 150, 150, 1), fontWeight: FontWeight.normal),
               fillColor: fillColor,
               filled: filled,
               contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
@@ -233,6 +239,7 @@ class UbahProfilWidget extends StatelessWidget {
                 ),
               ),
             ),
+
           ),
         ),
       ],
@@ -284,6 +291,12 @@ class UbahProfilWidget extends StatelessWidget {
                   width: borderWidth,
                 ),
               ),
+            ),
+            dropdownColor: Colors.white,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+              fontSize: 16,
             ),
             items: items
                 .map((status) => DropdownMenuItem(
