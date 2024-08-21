@@ -234,7 +234,6 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
       },
     );
   }
-
 }
 
 class CardWidget extends StatefulWidget {
@@ -263,6 +262,9 @@ class CardWidget extends StatefulWidget {
 class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
+    final bool showIcon = true; // Adjust logic as needed
+    final String iconPath = widget.index % 2 == 0 ? 'assets/love-icon.png' : 'assets/fire-icon.png'; // Randomly select an icon
+    // final String iconPath = 'assets/love-icon.png'; // Randomly select an icon
     return GestureDetector(
       onTap: widget.onToggleDescription,
       child: Container(
@@ -273,6 +275,7 @@ class _CardWidgetState extends State<CardWidget> {
         child: Stack(
           fit: StackFit.expand,
           children: [
+
             // Background Image
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
@@ -282,6 +285,23 @@ class _CardWidgetState extends State<CardWidget> {
               ),
             ),
             // Overlay with gradient background
+            if (showIcon)
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Image.asset(iconPath, fit: BoxFit.contain),
+                  ),
+                ),
+              ),
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -394,3 +414,4 @@ class _CardWidgetState extends State<CardWidget> {
     );
   }
 }
+
