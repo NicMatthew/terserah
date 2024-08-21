@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'dart:async';
-import 'result.dart'; // Import the result page
 
 class SwipeCardDemo extends StatefulWidget {
   @override
@@ -35,6 +34,14 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
     'Sate ayam adalah potongan daging ayam yang dipanggang di atas arang, disajikan dengan saus kacang yang manis dan gurih. Hidangan khas Indonesia ini sering dinikmati sebagai makanan ringan atau lauk, dan terkenal dengan aroma dan rasanya yang menggugah selera.',
     'Spageti adalah pasta khas Italia yang berupa mie panjang dan biasanya disajikan dengan saus seperti bolognese atau carbonara. Hidangan ini terkenal di seluruh dunia karena rasanya yang lezat dan cocok dinikmati sebagai makan siang atau makan malam.',
     // Add more descriptions if needed
+  ];
+
+  // List to determine which logo to show (null means no logo)
+  List<String?> logos = [
+    'assets/love-icon.png',  // Show heart icon
+    null,                // No icon
+    'assets/fire-icon.png',   // Show fire icon
+    // Add more logos if needed
   ];
 
   late Timer _timer;
@@ -82,6 +89,10 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
     final infiniteDescriptions = List<String>.generate(
       100, // Adjust the number as needed
           (index) => descriptions[index % descriptions.length],
+    );
+    final infiniteLogos = List<String?>.generate(
+      100, // Adjust the number as needed
+          (index) => logos[index % logos.length],
     );
 
     return Scaffold(
@@ -143,6 +154,7 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
                           category: infiniteCategories[index],
                           name: infiniteFoodsOrActivities[index],
                           description: infiniteDescriptions[index],
+                          logo: infiniteLogos[index],
                           isExpanded: _expandedStates[index] ?? false,
                           onToggleDescription: () {
                             setState(() {
@@ -223,10 +235,7 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ResultPage()),
-                );
+                // Navigate to the result page or perform any action here
               },
             ),
           ],
@@ -237,12 +246,13 @@ class _SwipeCardDemoState extends State<SwipeCardDemo> {
 
 }
 
-class CardWidget extends StatefulWidget {
+class CardWidget extends StatelessWidget {
   final int index;
   final String image;
   final String category;
   final String name;
   final String description;
+  final String? logo;
   final bool isExpanded;
   final VoidCallback onToggleDescription;
 
@@ -252,142 +262,96 @@ class CardWidget extends StatefulWidget {
     required this.category,
     required this.name,
     required this.description,
+    required this.logo,
     required this.isExpanded,
     required this.onToggleDescription,
   });
 
   @override
-  _CardWidgetState createState() => _CardWidgetState();
-}
-
-class _CardWidgetState extends State<CardWidget> {
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onToggleDescription,
+      onTap: onToggleDescription,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.5), blurRadius: 8)],
+          color: Colors.white,
         ),
         child: Stack(
-          fit: StackFit.expand,
           children: [
-            // Background Image
+            // Image and overlay
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.asset(
-                widget.image,
-                fit: BoxFit.cover, // Cover the entire card
+                image,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
               ),
             ),
-            // Overlay with gradient background
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  gradient: LinearGradient(
-                    colors: [Colors.transparent, Color(0xFF418B8C)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Colors.black.withOpacity(0.5),
+                    Colors.transparent,
+                  ],
                 ),
-                padding: const EdgeInsets.all(8.0),
-                child: // Tambahkan di bawah deskripsi
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Kategori
-                    Text(
-                      widget.category,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+              ),
+            ),
+            // Content
+            Positioned(
+              left: 16,
+              bottom: 16,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    category,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(height: 8),
-                    // Nama makanan atau aktivitas
-                    Text(
-                      widget.name,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
-                    // Deskripsi yang bisa diperluas
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                      height: widget.isExpanded ? null : 0, // Animate height
-                      child: AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 300),
-                        child: widget.isExpanded
-                            ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                widget.description,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            // Bar Rating dan Asal Rating
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: LinearProgressIndicator(
-                                    value: 0.9, // Contoh nilai rating, bisa diganti sesuai data
-                                    color: Colors.yellow,
-                                    backgroundColor: Colors.white.withOpacity(0.3),
-                                  ),
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  '4.5', // Contoh rating, bisa diganti sesuai data
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                SizedBox(width: 4),
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
-                                  size: 18,
-                                ),
-                                SizedBox(width: 8),
-                                Image.asset(
-                                  'assets/google-icon.png', // Path ke ikon Google atau sumber lain
-                                  height: 50,
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                            : SizedBox.shrink(),
-                      ),
-                    ),
-                    // Panah di tengah bawah
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: GestureDetector(
-                        onTap: widget.onToggleDescription,
-                        child: Icon(
-                          widget.isExpanded ? Icons.expand_less : Icons.expand_more,
+                  ),
+                  if (isExpanded)
+                    Padding(
+                      padding: EdgeInsets.only(top: 8),
+                      child: Text(
+                        description,
+                        style: TextStyle(
                           color: Colors.white,
-                          size: 30,
+                          fontSize: 14,
                         ),
                       ),
                     ),
-                  ],
-                ),
-
+                ],
               ),
             ),
+            // Heart or fire logo
+            if (logo != null)
+              Positioned(
+                top: 16,
+                right: 16,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Image.asset(
+                    logo!,
+                    width: 24,
+                    height: 24,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
