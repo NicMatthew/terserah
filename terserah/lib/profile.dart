@@ -109,7 +109,7 @@ class ProfileHeader extends StatelessWidget {
                     color: Color.fromRGBO(179, 211, 200, 1),
                   ),
                 ),
-                SizedBox(width: 200), // Increased the width for more spacing
+                SizedBox(width: 150), // Increased the width for more spacing
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
